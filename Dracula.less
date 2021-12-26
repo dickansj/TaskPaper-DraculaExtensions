@@ -1,0 +1,281 @@
+// Using and customizing stylesheets:
+// https://guide.taskpaper.com/using-taskpaper/using-stylesheets.html
+// https://guide.taskpaper.com/reference/stylesheets/
+
+// This stylesheet is modified from https://github.com/jdcola/taskpaper-dracula-theme and https://github.com/wakatara/HelvetiCan-Taskpaper-theme
+// Author: dickansj@github
+
+// Dracula Palette
+@D-background: #282a36;
+@D-currentline: #44475a;
+@D-selection: #44475a;
+@D-foreground: #f8f8f2;
+@D-comment: #6272a4;
+@D-cyan: #8be9fd;
+@D-green: #50fa7b;
+@D-orange: #ffb86c;
+@D-pink: #ff79c6;
+@D-purple: #bd93f9;
+@D-red: #ff5555;
+@D-yellow: #f1fa8c;
+
+// UI Scale:
+@base-font-size: 16;
+@user-font-size: $USER_FONT_SIZE;
+@ui-scale: @user-font-size / @base-font-size;
+
+// UI Colors:
+@tint-color: @D-pink;
+@selection-color: mix(@D-selection, @D-background, 30%);
+@invisibles-color: mix(@D-selection, @D-background, 70%);
+@background-color: @D-background;
+
+// Base Text:
+@font-family: "Dank Mono", "-apple-system";
+@text-color: @D-foreground;
+@line-height-multiple: 1.1;
+
+// Handles:
+// @handle-size: Float;
+// @handle-color: Color;
+// @handle-secondary-color: Color;
+
+// Window Element:
+window {
+	appearance: NSAppearanceNameVibrantDark;
+}
+
+// Sidebar Element:
+sidebar {
+	// appearance: NSAppearanceNameVibrantDark;
+}
+
+// Searchbar Element:
+searchbar {
+	appearance: NSAppearanceNameVibrantDark;
+	color: @D-pink;
+	secondary-text-color: @D-cyan;
+	error-text-color: @D-red;
+	placeholder-color: @D-foreground;
+	background-color: @D-currentline;
+}
+
+// Editor Element:
+editor {
+	item-indent: 20 * @ui-scale;
+	caret-width: floor(2 * @ui-scale);
+	caret-color: @tint-color;
+	drop-indicator-color: @tint-color;
+	selection-background-color: @D-selection;
+	guide-line-color: mix(@tint-color, @D-background, 20%);
+	guide-line-width: floor(1 * @ui-scale);
+	fold-color: @D-pink;
+	// editor-wrap-to-column: Float;
+	// item-wrap-to-column: Float;
+	// top-padding-percent: Float%; // for example 50%
+	// bottom-padding-percent: Float%;
+	// typewriter-scroll-percent: Float%;
+}
+
+// Item General Properties:
+item {
+	// handle-size: Float;
+	handle-color: none;
+	// handle-border-color: Color;
+	handle-border-width: floor(1 * @ui-scale);
+	// line-height-multiple: Float;
+	// paragraph-spacing-before: Float;
+	// paragraph-spacing-after: Float;
+	// color: Color; inherited
+	// font-family: Font; inherited
+	// font-style: normal | italic; inherited
+	// font-weight: normal | bold; inherited - e.g. lighter(@D-foreground, 10%);
+	// font-size: Float; inherited  - e.g. (@user-font-size * 1.0);
+	// cursor: default | pointer | text;
+	// background-color: Color;
+	// text-decoration: none | underline | line-through;
+	// text-underline: LineStyle;
+	// text-underline-color: Color;
+	// text-strikethrough: LineStyle;
+	// text-strikethrough-color: Color;
+	// text-baseline-offset: Float;
+	// text-expansion: Float;
+
+}
+
+item[empty] {
+	handle-color: none;
+	handle-border-color: none;
+}
+
+item[focused] {
+	background-color: @D-currentline;
+}
+
+item[collapsed] {
+	handle-color: @tint-color;
+	handle-border-color: none;
+}
+
+// Note Properties:
+item[data-type="note"] {
+	color: @D-comment;
+	// font-size: (@user-font-size * 1.1);
+	font-weight: lighter(@text-color, 10%);
+	font-style: italic;
+}
+
+// Task Properties:
+item[data-type="task"] {
+   font-size: (@user-font-size * 1.15);
+}
+
+// Project Properties:
+item[data-type="project"] {
+	color: @D-green;
+	font-size: (@user-font-size * 1.2);
+	font-weight: normal;
+	line-height-multiple: 1.5;
+}
+
+item[depth="1"].item[data-type="project"] {
+	font-weight: bold;
+}
+
+// Links and Tags:
+run[link] {
+	cursor: pointer;
+	color: @D-cyan;
+}
+
+run[tag] {
+	color: @D-foreground;
+	font-size: (@user-font-size * 0.9);
+	text-baseline-offset: (@user-font-size * 0.1);
+}
+
+// Item formatting by tag ABC in [data-ABC]
+// run[content] processes on contentBodyString (item except tags)
+// run[tag=data-ABC] processes on tag ABC
+
+item[data-review] {
+	>run[content] {
+		text-decoration: underline;
+		text-underline-color: mix(@D-green, @D-background, 60%);
+    }
+
+	>run[tag=data-review] {
+		color: mix(@D-green, @D-background, 60%);
+	}
+}
+
+item[data-wip] {
+	>run[content] {
+		color: mix(@D-green, @D-background, 80%);
+    }
+
+	>run[tag=data-wip] {
+		color: mix(@D-green, @D-background, 80%);
+	}
+}
+
+item[data-wd] {
+
+	>run[tag=data-wd] {
+		color: @D-yellow;
+	}
+}
+
+item[data-today] {
+	>run[content] {
+		text-decoration: underline;
+		text-underline-color: @D-orange;
+	}
+
+	>run[tag=data-today] {
+		color: @D-orange;
+	}
+}
+
+item[data-tomorrow] {
+	>run[tag=data-tomorrow] {
+		color: @D-orange;
+	}
+}
+
+item[data-overdue] {
+	>run[content] {
+		text-decoration: underline;
+		text-underline-color: @D-red;
+	}
+
+	>run[tag=data-overdue] {
+		color: @D-red;
+	}
+}
+
+item[data-defer] {
+	>run[content] {
+		color: @D-purple;
+	}
+
+	>run[tag=data-defer] {
+		color: mix(@D-orange, @D-background, 60%);
+	}
+}
+
+item[data-waiting] {
+	>run[content] {
+		color: @D-purple;
+	}
+
+	>run[tag=data-waiting] {
+		color: mix(@D-orange, @D-background, 60%);
+	}
+}
+
+item[data-tbd] {
+	>run[content] {
+		color: mix(@D-foreground, @D-background, 50%);
+	}
+
+	>run[tag=data-tbd] {
+		color: mix(@D-orange, @D-background, 60%);
+	}
+}
+
+item[data-start] {
+	>run[tag=data-start] {
+		color: @D-pink;
+	}
+}
+
+item[data-due] {
+	>run[tag=data-due] {
+		color: mix(@D-orange, @D-background, 60%);
+	}
+}
+
+item[data-done] {
+	>run[content] {
+		text-strikethrough: NSUnderlineStyleSingle;
+		text-strikethrough-color: @D-red;
+		color: mix(@D-red, @D-background, 85%);
+	}
+
+	>run[tag=data-done] {
+		color: mix(@D-orange, @D-background, 55%);
+	}
+}
+
+item[data-cancel] {
+	>run[content] {
+		text-strikethrough: NSUnderlineStyleSingle;
+		text-strikethrough-color: @D-red;
+		color: mix(@D-comment, @D-background, 55%);
+	}
+
+	>run[tag=data-cancel] {
+		color: mix(@D-orange, @D-background, 55%);
+	}
+}
