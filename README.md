@@ -1,2 +1,3 @@
 # TaskPaper-DraculaExtensions
-A Dracula theme for TaskPaper, and some scripts to automate tagging and editor appearance
+
+![Sample TaskPaper document](https://raw.githubusercontent.com/dickansj/TaskPaper-DraculaExtensions/main/Dracula%20Sample.gif)
