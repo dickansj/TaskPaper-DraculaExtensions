@@ -15,4 +15,5 @@ View a [zoomable PNG](https://raw.githubusercontent.com/dickansj/TaskPaper-Dracu
 
 ### Font
 - As pictured above, `Dracula.less` uses [Dank Mono](https://philpl.gumroad.com/l/dank-mono), a paid monospaced font.
+
 - However, it will default to the System Font if you don't have that typeface, and you can set any font you like in `Dracula.less`.
