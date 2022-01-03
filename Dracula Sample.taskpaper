@@ -4,20 +4,20 @@ Welcome:
 	- The accompanying JXA scripts automate a few extra formatting elements.
 	- For example:
 		- [The wip tag brackets works in progress.] @wip
-		- Urgency tags are added/removed @due(2021-12-27) @tomorrow
-			- when the due date matches today or tomorrow @due(2021-12-26) @today
-			- or if your task is overdue @due(2021-12-25) @overdue @today
+		- Urgency tags are added/removed @due(2022-01-03) @today
+			- when the due date matches today or tomorrow @due(2022-01-04) @tomorrow
+			- or if your task is overdue @due(2022-01-02) @overdue @today
 Getting Started:
 	- See the instructions below to customize Dracula.less and add it to your TaskPaper stylesheets.
 	- You can customize the scripts and set them to trigger as needed.
 			Use osascript, Keyboard Maestro JXA action, etc.
 	- This to-do list is included as a sample TaskPaper document so you can easily test your modifications.
 More Styles:
-	- Call John @due(2022-01-01) @done(2021-12-31)
+	- Call John @due(2022-01-05) @done(2022-01-03)
 	- Presentation prep @wd
-	- Chapter revisions @start(2022-01-04)
+	- Chapter revisions @start(2022-01-10)
 		- Review and summarize feedback @waiting
-		- Draft edits @due(2022-01-11)
+		- Draft edits @due(2022-01-18)
 		- Meet with advisor @tbd
 	- Update TaskPaper docs? @review
 	- Learn JavaScript @defer
@@ -25,3 +25,4 @@ More Styles:
 	- Moof! @cancel
 Enjoy!:
 	- To fold/unfold an item click the dot to the left of the item.
+
